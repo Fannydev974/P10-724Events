@@ -4,25 +4,35 @@ import Field, { FIELD_TYPES } from "../../components/Field";
 import Select from "../../components/Select";
 import Button, { BUTTON_TYPES } from "../../components/Button";
 
-const mockContactApi = () => new Promise((resolve) => { setTimeout(resolve, 1000); })
+// const mockContactApi = () => new Promise((resolve) => { setTimeout(resolve, 1000); })
+
+const mockContactApi = () => new Promise((resolve, reject) => {
+  setTimeout(() => {
+    // Simule un échec aléatoire
+    if (Math.random() > 0.5) {
+      resolve({ message: "Message envoyé !" });
+    } else {
+      reject(new Error("Echec de l'envoi du message"));
+    }
+  }, 1000);
+});
 
 const Form = ({ onSuccess, onError }) => {
   const [sending, setSending] = useState(false);
-  const sendContact = useCallback(
-    async (evt) => {
-      evt.preventDefault();
-      setSending(true);
-      // We try to call mockContactApi
-      try {
-        await mockContactApi();
-        setSending(false);
-      } catch (err) {
-        setSending(false);
-        onError(err);
-      }
-    },
-    [onSuccess, onError]
-  );
+
+  const sendContact = useCallback(async (evt) => {
+    evt.preventDefault();
+    setSending(true);
+    try {
+      await mockContactApi();
+      setSending(false);
+      onSuccess(); // Appeler la fonction onSuccess lorsque l'envoi réussit
+    } catch (err) {
+      setSending(false);
+      onError(err); // Appeler la fonction onError avec l'erreur en cas d'échec
+    }
+  }, [onSuccess, onError]);
+
   return (
     <form onSubmit={sendContact}>
       <div className="row">
@@ -64,3 +74,4 @@ Form.defaultProps = {
 }
 
 export default Form;
+

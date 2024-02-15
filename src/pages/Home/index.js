@@ -13,7 +13,7 @@ import Modal from "../../containers/Modal";
 import { useData } from "../../contexts/DataContext";
 
 const Page = () => {
-  const {last} = useData()
+  const { last } = useData()
   return <>
     <header>
       <Menu />
@@ -124,25 +124,39 @@ const Page = () => {
           label="boom"
         />
       </div>
+
       <div className="col contact">
         <h3>Contactez-nous</h3>
         <address>45 avenue de la République, 75000 Paris</address>
         <div>01 23 45 67 89</div>
         <div>contact@724events.com</div>
+
         <div>
-          <a href="#twitch">
-            <Icon name="twitch" />
-          </a>
-          <a href="#facebook">
-            <Icon name="facebook" />
-          </a>
-          <a href="#twitter">
-            <Icon name="twitter" />
-          </a>
-          <a href="#youtube">
-            <Icon name="youtube" />
-          </a>
+          <ul>
+            <li>
+              <a href="#twitch" aria-label="Lien vers Twitch">
+                <Icon name="twitch" />
+              </a>
+            </li>
+            <li>
+              <a href="#facebook" aria-label="Lien vers Facebook">
+                <Icon name="facebook" />
+              </a>
+            </li>
+            <li>
+              <a href="#twitter" aria-label="Lien vers Twitter">
+                <Icon name="twitter" />
+              </a>
+            </li>
+            <li>
+              <a href="#youtube" aria-label="Lien vers YouTube">
+                <Icon name="youtube" />
+              </a>
+            </li>
+          </ul>
         </div>
+
+
       </div>
       <div className="col description">
         <Logo size="large" />
@@ -158,3 +172,5 @@ const Page = () => {
 }
 
 export default Page;
+
+// refection ligne 134 a 157
