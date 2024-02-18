@@ -27,9 +27,10 @@ export const DataProvider = ({ children }) => {
     }
   }, []);
 
-  const events = data;
-  const sortedEvents = events?.sort((evtA, evtB) => new Date(evtA.date) > new Date(evtB.date) ? -1 : 1);
-  const last = sortedEvents?.[0];
+  const events = data?.events; //  Si data est défini, la propriété events est extraite et assignée à events. Sinon, events sera undefind.
+  const sortedEvents = events?.sort((evtA, evtB) => new Date(evtA.date) > new Date(evtB.date) ? -1 : 1); // trie les événements en fonction de leur date.
+  const last = sortedEvents?.[0]; // extrait l'événement le plus récent après le tri, 
+  // Si sortedEvents est défini et non vide, le premier élément est assigné à last.Sinon, last =undefind.
 
 
   useEffect(() => {

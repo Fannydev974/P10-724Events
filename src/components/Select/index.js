@@ -18,7 +18,8 @@ const Select = ({
   const changeValue = (newValue) => {
     onChange(newValue);
     setValue(newValue);
-    setCollapsed(!collapsed);
+    setCollapsed((currentCollapsed) => !currentCollapsed);// Inverser l'état de `collapsed` en utilisant la valeur actuelle
+    // setCollapsed(!collapsed);
   };
   return (
     <div className={`SelectContainer ${type}`} data-testid="select-testid">
@@ -50,7 +51,6 @@ const Select = ({
           )}
         </ul>
         <input type="hidden" value={value || ""} name={name} />
-
         <button
           type="button"
           data-testid="collapse-button-testid"
@@ -100,3 +100,4 @@ Select.defaultProps = {
 }
 
 export default Select;
+

@@ -27,13 +27,15 @@ const EventList = () => {
   // return false;
   // });
 
+
+  // Filtre les événements en fonction du type sélectionné
   const filteredEventsByType = (
     type
       ? data?.events.filter(event => event.type === type)
       : data?.events) || [];
 
   // Filtrage des événements en fonction de la page actuelle (pagination)
-  const filteredEvents = filteredEventsByType.slice(
+  const paginatedEvents = filteredEventsByType.slice(
     (currentPage - 1) * PER_PAGE,
     currentPage * PER_PAGE
   );
@@ -52,7 +54,7 @@ const EventList = () => {
   };
 
 
-  const pageNumber = Math.floor((filteredEvents?.length || 0) / PER_PAGE) + 1;
+  const pageNumber = Math.floor((paginatedEvents?.length || 0) / PER_PAGE) + 1;
   const typeList = new Set(data?.events.map((event) => event.type));
   return (
     <>
@@ -67,7 +69,7 @@ const EventList = () => {
             onChange={(value) => (value ? changeType(value) : changeType(null))}
           />
           <div id="events" className="ListContainer">
-            {filteredEvents.map((event) => (
+            {paginatedEvents.map((event) => (
               <Modal key={event.id} Content={<ModalEvent event={event} />}>
                 {({ setIsOpened }) => (
                   <EventCard
