@@ -11,12 +11,12 @@ const Slider = () => {
     new Date(evtA.date) < new Date(evtB.date) ? -1 : 1
   ); // méthode sort() évenements classés par ordre décroissant
 
-  const imgSlide = data?.focus?.length; //  imgSlide avec la longueur du tableau data.focus, gère également les cas où data ou data.focus pourrait être nul ou indéfini grâce à ?.
+  const imgSlide = data?.focus?.length; // imgSlide avec la longueur du tableau data.focus, gère également les cas où data ou data.focus pourrait être nul ou indéfini grâce à ?.
 
 
   const nextCard = () => { // fonction appelée de manière répétée grâce à useEffect pour passer à la prochaine carte dans le slider.
     setTimeout(
-      () => setIndex(index < imgSlide - 1 ? index + 1 : 0), //
+      () => setIndex(index < imgSlide - 1 ? index + 1 : 0), // permet de passer à la prochaine carte dans le slider.
       5000
     );
   };

@@ -169,6 +169,13 @@ footer {
       svg {
         margin-right: 8px;
       }
+
+
+      ul {
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+      }
     }
   }
 

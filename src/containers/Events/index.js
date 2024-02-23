@@ -13,19 +13,6 @@ const EventList = () => {
   const { data, error } = useData();
   const [type, setType] = useState();
   const [currentPage, setCurrentPage] = useState(1);
-  // const filteredEvents = (
-  // (!type
-  // ? data?.events
-  // : data?.events) || []
-  // ).filter((event, index) => {
-  // if (
-  // (currentPage - 1) * PER_PAGE <= index &&
-  // PER_PAGE * currentPage > index
-  // ) {
-  // return true;
-  // }
-  // return false;
-  // });
 
 
   // Filtre les événements en fonction du type sélectionné
@@ -38,13 +25,13 @@ const EventList = () => {
   const paginatedEvents = filteredEventsByType.slice(
     (currentPage - 1) * PER_PAGE,
     currentPage * PER_PAGE
-  );
+  ); // méthode slice() pour extraire une portion du tableau filteredEventsByType
+  // compris entre l'index de départ et l'index de fin calculés précédemment. 
+  // "paginatedEvents" contiendra les événements de la page actuelle, en fonction du type filtré, 
+  // et en respectant la pagination définie par PER_PAGE.
 
 
-  // const changeType = (evtType) => {
-  // setCurrentPage(1);
-  // setType(evtType);
-  // };
+
 
   const changeType = (evtType) => {
     // Réinitialiser la page actuelle à 1 lorsque le type change

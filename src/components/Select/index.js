@@ -19,7 +19,7 @@ const Select = ({
     onChange(newValue);
     setValue(newValue);
     setCollapsed((currentCollapsed) => !currentCollapsed);// Inverser l'état de `collapsed` en utilisant la valeur actuelle
-    // setCollapsed(!collapsed);
+
   };
   return (
     <div className={`SelectContainer ${type}`} data-testid="select-testid">

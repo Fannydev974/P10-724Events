@@ -4,7 +4,7 @@ import Field, { FIELD_TYPES } from "../../components/Field";
 import Select from "../../components/Select";
 import Button, { BUTTON_TYPES } from "../../components/Button";
 
-const mockContactApi = () => new Promise((resolve) => { setTimeout(resolve, 900); })
+const mockContactApi = () => new Promise((resolve) => { setTimeout(resolve, 900); }) // 900 moins de temps pour l'envoi du formulaire
 
 
 const Form = ({ onSuccess, onError }) => {

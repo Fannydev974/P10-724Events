@@ -123,7 +123,7 @@ const Page = () => {
             title={last.title}
             date={new Date(last.date)}
             small // indique si la carte doit être rendue dans un format réduit ou non.
-            label="cache"
+            label="évènement" // Nom du Label du dernier évènement dans le footer
           />
         )}
       </div>
